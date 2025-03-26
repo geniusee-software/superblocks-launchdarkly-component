@@ -47,3 +47,30 @@ export const applyFeatureFlags = (
     });
   });
 };
+
+export const manageGlobalOverlay = {
+  selector: "[data-testid='global-overlay']",
+  remove() {
+    const overlay = document.querySelector(this?.selector);
+    if (overlay) {
+      overlay.remove();
+    }
+  },
+  create() {
+    if (typeof window !== "undefined") {
+      const overlay = document.createElement("div");
+      overlay.setAttribute("data-testid", "global-overlay");
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+      overlay.style.backdropFilter = "blur(70px)";
+      overlay.style.pointerEvents = "none";
+      overlay.style.zIndex = "1000";
+
+      document.body.appendChild(overlay);
+    }
+  },
+};

@@ -1,10 +1,12 @@
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useSuperblocksIsLoading } from "@superblocksteam/custom-components";
 import { LDProvider, useFlags } from "launchdarkly-react-client-sdk";
 import { type Props } from "./types";
 
 // helpers
-import { applyFeatureFlags } from "./utils";
+import { applyFeatureFlags, manageGlobalOverlay } from "./utils";
+
+manageGlobalOverlay.create();
 
 const FeatureFlagsManager = ({
   configs,
@@ -18,6 +20,12 @@ const FeatureFlagsManager = ({
       applyFeatureFlags(flags, configs);
     }
   }, [flags, configs]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      manageGlobalOverlay.remove();
+    }, 1000);
+  }, []);
 
   return null;
 };
