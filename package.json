@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
-    "dev": "superblocks components watch"
+    "dev": "superblocks components watch",
+    "deploy": "superblocks components upload"
   },
   "dependencies": {
     "@superblocksteam/custom-components": "1.10.0",

@@ -113,6 +113,14 @@ To modify or extend this demo:
    ```
    npm run lint:fix
    ```
+4. Start development server:
+   ```
+   npm run dev
+   ```
+5. Deploy component to Superblocks:
+   ```
+   npm run deploy
+   ```
 
 ## Dependencies
 
